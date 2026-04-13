@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.Scanner;
 
 public class Veiculo {
@@ -5,7 +7,7 @@ public class Veiculo {
 
     Scanner scanner = new Scanner(System.in);
 
-    private void Construtor(){
+    public Veiculo(){
         System.out.println("digite a placa do carro: ");
         placa = scanner.nextLine();
         System.out.println("digite o modelo: ");

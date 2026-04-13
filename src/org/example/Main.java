@@ -2,8 +2,9 @@ package org.example;
 import java.util.Scanner;
 
 public class Main {
-    static void main() {
+    static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
 
         int opcao = 0;
 
@@ -20,7 +21,10 @@ public class Main {
             System.out.println("usuario digitou a opcao: " + opcao);
             switch (opcao){
                 case 1:
-
+                    Veiculo veiculo = new Veiculo();
+                    System.out.println("Veículo cadastrado:");
+                    System.out.println("Placa: " + veiculo.getPlaca());
+                    System.out.println("Modelo: " + veiculo.getModelo());
                 break;
                 case 3:
 
