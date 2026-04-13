@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Main {
     static void main() {
         Scanner scanner = new Scanner(System.in);
+
         int opcao = 0;
 
         do{
