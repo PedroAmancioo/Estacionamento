@@ -1,4 +1,5 @@
 package org.example;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -16,8 +17,14 @@ public class Main {
             System.out.println("4. Sair.");
             System.out.println("Escolha uma opção");
 
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+            try{
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e){
+                System.out.print(e);
+                scanner.next();
+            }
+
             System.out.println("usuario digitou a opcao: " + opcao);
             switch (opcao){
                 case 1:
