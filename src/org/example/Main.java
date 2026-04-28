@@ -6,6 +6,8 @@ public class Main {
     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        Estacionamento estacionamento = new Estacionamento(10);
+
 
         int opcao = 0;
 
@@ -17,23 +19,28 @@ public class Main {
             System.out.println("4. Sair.");
             System.out.println("Escolha uma opção");
 
+            String entradaOpcao = scanner.nextLine().trim();
             try{
-                opcao = scanner.nextInt();
-                scanner.nextLine();
+                opcao = Integer.parseInt(entradaOpcao);
             } catch (InputMismatchException e){
-                System.out.print(e);
-                scanner.next();
+                System.out.print("invalido! erro " + e + " digite um numero entre 1 e 4 ");
+                continue;
             }
 
-            System.out.println("usuario digitou a opcao: " + opcao);
+            if(opcao>=1 && opcao<=4)
+                System.out.println("usuario digitou a opcao: " + opcao);
+
             switch (opcao){
                 case 1:
                     Veiculo veiculo = new Veiculo();
                     System.out.println("Veículo cadastrado:");
                     System.out.println("Placa: " + veiculo.getPlaca());
                     System.out.println("Modelo: " + veiculo.getModelo());
+                    estacionamento.estacionarVeiculo(veiculo);
                 break;
+
                 case 3:
+                estacionamento.exibirVagasLivres();
 
             }
         } while (opcao != 4);
