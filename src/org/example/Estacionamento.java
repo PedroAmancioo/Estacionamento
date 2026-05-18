@@ -32,6 +32,28 @@ public class Estacionamento {
         return false;
     }
 
+    public void liberarVeiculo(String veiculo, String placa){
+        for (Vaga vaga : vagas) {
+
+            if (vaga.isOcupada()) {
+
+                if (vaga.getVeiculoEstacionado().getPlaca().equals(placa)) {
+
+                    vaga.liberar();
+
+                    System.out.println("Veículo removido da vaga " + vaga.getNumero());
+
+                    return true;
+                }
+            }
+        }
+
+        System.out.println("Veículo não encontrado!");
+
+        return false;
+
+    }
+
     public Estacionamento (int totalDeVagas){
         this.vagas = new ArrayList<>();
 
@@ -40,4 +62,5 @@ public class Estacionamento {
             this.vagas.add(novaVaga);
         }
     }
+
 }

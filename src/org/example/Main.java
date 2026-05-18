@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    static void main(String[] args) {
+    static <Protected> void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         Estacionamento estacionamento = new Estacionamento(10);
@@ -38,7 +38,13 @@ public class Main {
                     System.out.println("Modelo: " + veiculo.getModelo());
                     estacionamento.estacionarVeiculo(veiculo);
                 break;
+                case 2:
+                    System.out.println("qual carro será liberado?");
+                    String placa = scanner.nextLine();
+                    estacionamento.liberarVeiculo(placa);
+                    
 
+                break;
                 case 3:
                 estacionamento.exibirVagasLivres();
 
