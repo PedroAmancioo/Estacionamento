@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    static void main(String[] args) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         Estacionamento estacionamento = new Estacionamento(10);
@@ -51,5 +51,6 @@ public class Main {
             }
         } while (opcao != 4);
         System.out.println("Usuario saiu do sistema");
+
     }
 }
