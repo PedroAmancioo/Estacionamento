@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    static <Protected> void main(String[] args) {
+    static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         Estacionamento estacionamento = new Estacionamento(10);
@@ -22,7 +22,7 @@ public class Main {
             String entradaOpcao = scanner.nextLine().trim();
             try{
                 opcao = Integer.parseInt(entradaOpcao);
-            } catch (InputMismatchException e){
+            } catch (NumberFormatException e){
                 System.out.print("invalido! erro " + e + " digite um numero entre 1 e 4 ");
                 continue;
             }

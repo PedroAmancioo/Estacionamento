@@ -7,6 +7,7 @@ public class Estacionamento {
     private ArrayList<Ticket> ticketsAbertos;
     private Tarifario tarifario;
 
+
     public void exibirVagasLivres() {
         System.out.println("Vagas livres:");
 
@@ -22,7 +23,13 @@ public class Estacionamento {
     public boolean estacionarVeiculo(Veiculo veiculo) {
         for (Vaga vaga : vagas) {
             if (!vaga.isOcupada()) {
+
                 vaga.estacionar(veiculo);
+
+                Ticket ticket = new Ticket(vaga.getNumero(), veiculo);
+
+                ticketsAbertos.add(ticket);
+
                 System.out.println("Veículo estacionado na vaga " + vaga.getNumero());
                 return true;
             }
@@ -32,30 +39,42 @@ public class Estacionamento {
         return false;
     }
 
-    public void liberarVeiculo(String veiculo, String placa){
-        for (Vaga vaga : vagas) {
+    public void liberarVeiculo(String placa){
+        for (Vaga vaga : vagas){
+            if(vaga.isOcupada()){
+                if(vaga.getVeiculoEstacionado().getPlaca().equals(placa)){
+                    for(Ticket ticket : ticketsAbertos){
+                        if(ticket.getVeiculo().getPlaca().equals(placa)){
 
-            if (vaga.isOcupada()) {
+                            ticket.registrarSaida();
 
-                if (vaga.getVeiculoEstacionado().getPlaca().equals(placa)) {
+                            int horas = ticket.calcularTempoEmHoras();
 
+                            double valor = tarifario.calcularValor(horas);
+
+                            System.out.println("Tempo estacionado: " + horas + " horas");
+
+                            System.out.println("Valor a pagar: R$" + valor);
+
+                            ticketsAbertos.remove(ticket);
+                            break;
+                        }
+                    }
                     vaga.liberar();
 
                     System.out.println("Veículo removido da vaga " + vaga.getNumero());
-
-                    return true;
+                    return;
                 }
             }
         }
 
         System.out.println("Veículo não encontrado!");
-
-        return false;
-
     }
 
     public Estacionamento (int totalDeVagas){
         this.vagas = new ArrayList<>();
+        this.ticketsAbertos = new ArrayList<>();
+        this.tarifario = new Tarifario();
 
         for(int i= 1; i <= totalDeVagas; i++){
             Vaga novaVaga = new Vaga(i);
