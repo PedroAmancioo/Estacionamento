@@ -52,5 +52,7 @@ public class Main {
         } while (opcao != 4);
         System.out.println("Usuario saiu do sistema");
 
+        System.out.println("Pressione Enter para sair...");
+        scanner.nextLine();
     }
 }
